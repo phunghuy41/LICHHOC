@@ -1,0 +1,10 @@
+export const pad=n=>String(n).padStart(2,"0");
+export const dateKey=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+export const parseKey=k=>{const [y,m,d]=k.split("-").map(Number);return new Date(y,m-1,d)};
+export const addDays=(d,n)=>{const x=new Date(d);x.setDate(x.getDate()+n);return x};
+export const startOfWeek=d=>{const x=new Date(d);const day=x.getDay();x.setDate(x.getDate()-(day===0?6:day-1));x.setHours(0,0,0,0);return x};
+export const fmtDate=d=>d.toLocaleDateString("vi-VN",{weekday:"long",day:"2-digit",month:"2-digit",year:"numeric"});
+export const fmtShort=d=>d.toLocaleDateString("vi-VN",{day:"2-digit",month:"2-digit"});
+export const timeToMin=t=>{const [h,m]=t.split(":").map(Number);return h*60+m};
+export const minToTime=m=>`${pad(Math.floor(m/60)%24)}:${pad(m%60)}`;
+export const uid=()=>crypto.randomUUID?.()||Date.now().toString(36)+Math.random().toString(36).slice(2);

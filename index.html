@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#eef4ff">
+  <meta name="description" content="LumiSchedule — lịch học cá nhân nhẹ nhàng, lưu ngay trên thiết bị.">
+  <title>LumiSchedule — Lịch học của tôi</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/background.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/calendar.css">
+  <link rel="stylesheet" href="css/modal.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/mobile.css">
+  <link rel="stylesheet" href="css/desktop.css">
+</head>
+<body>
+  <div class="ambient" aria-hidden="true">
+    <div class="orb orb-a"></div><div class="orb orb-b"></div><div class="orb orb-c"></div>
+    <div class="stars" id="stars"></div>
+  </div>
+
+  <header class="topbar">
+    <button class="brand" id="homeBtn" aria-label="Về trang hôm nay">
+      <span class="brand-mark">✦</span>
+      <span><b>Lumi</b>Schedule</span>
+    </button>
+    <div class="top-actions">
+      <button class="icon-btn" id="themeBtn" title="Đổi giao diện">☀️</button>
+      <button class="icon-btn" id="quickAddBtn" title="Thêm nhanh">＋</button>
+    </div>
+  </header>
+
+  <main class="app-shell">
+    <section class="hero">
+      <div>
+        <p class="eyebrow" id="greeting">CHÀO BUỔI CHIỀU ✦</p>
+        <h1 id="todayTitle">Hôm nay</h1>
+        <p class="date-line" id="todayDate"></p>
+      </div>
+      <div class="hero-time">
+        <span id="clock">--:--</span>
+        <small id="heroStatus">Lịch của bạn đã sẵn sàng</small>
+      </div>
+    </section>
+
+    <section class="next-card glass" id="nextCard">
+      <div class="card-glow"></div>
+      <div class="next-top"><span class="section-label">BUỔI TIẾP THEO</span><span class="live-dot"></span></div>
+      <div class="next-main" id="nextMain"></div>
+      <div class="progress-wrap"><div class="progress-bar" id="nextProgress"></div></div>
+      <div class="next-foot"><span id="nextCountdown">—</span><button class="text-btn" id="nextDetails">Chi tiết →</button></div>
+    </section>
+
+    <section class="section-head">
+      <div><span class="section-label">LỊCH HÔM NAY</span><h2>Hôm nay có gì?</h2></div>
+      <button class="soft-btn" id="addTodayBtn">＋ Thêm</button>
+    </section>
+    <section class="timeline" id="todayTimeline"></section>
+
+    <section class="week-panel glass">
+      <div class="section-head compact">
+        <div><span class="section-label">TUẦN CỦA TÔI</span><h2>Thứ 2 → Chủ nhật</h2></div>
+        <div class="week-nav"><button class="mini-btn" id="prevWeek">‹</button><span id="weekLabel"></span><button class="mini-btn" id="nextWeek">›</button></div>
+      </div>
+      <div class="week-strip" id="weekStrip"></div>
+      <div class="week-list" id="weekList"></div>
+    </section>
+
+    <section class="lower-grid">
+      <section class="note-panel glass">
+        <div class="section-head compact">
+          <div><span class="section-label">GHI CHÚ</span><h2 id="noteTitle">Ghi chú hôm nay</h2></div>
+          <span class="save-state" id="noteState">Tự lưu</span>
+        </div>
+        <textarea id="noteInput" placeholder="Viết điều cần nhớ cho ngày này..."></textarea>
+      </section>
+
+      <section class="task-panel glass">
+        <div class="section-head compact">
+          <div><span class="section-label">VIỆC CẦN LÀM</span><h2>Checklist</h2></div>
+          <button class="mini-btn" id="addTaskBtn">＋</button>
+        </div>
+        <div id="taskList"></div>
+        <div class="empty-small" id="taskEmpty">Chưa có việc nào. Thêm một việc nhỏ nhé ✦</div>
+      </section>
+    </section>
+  </main>
+
+  <nav class="bottom-nav">
+    <button class="nav-item active" data-view="today">⌂<span>Hôm nay</span></button>
+    <button class="nav-item" data-view="week">▦<span>Tuần</span></button>
+    <button class="nav-add" id="bottomAdd">＋</button>
+    <button class="nav-item" data-view="tasks">✓<span>Việc</span></button>
+    <button class="nav-item" data-view="settings">⚙<span>Cài đặt</span></button>
+  </nav>
+
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal" id="modal"></div>
+  </div>
+  <div class="toast-stack" id="toastStack"></div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
